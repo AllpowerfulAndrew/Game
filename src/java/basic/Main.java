@@ -1,5 +1,8 @@
 package basic;
 
+import basic.armor.Armor;
+import basic.armor.ArmorMaterial;
+import basic.armor.ArmorType;
 import basic.unit.Warrior;
 import basic.weapon.Weapon;
 import basic.weapon.WeaponType;
@@ -29,9 +32,11 @@ public class Main {
 //        }
 
         Weapon knife = new Weapon(WeaponType.KNIFE, 1.5, 200);
+        Armor helm = new Armor(ArmorType.HELM, ArmorMaterial.CLOTH, 2, 200);
 
         Warrior warrior = new Warrior(strength, agility, concentariton, isMale, "Шива");
         warrior.setWeapon(knife);
+        warrior.setArmors(helm);
 
         System.out.println(
                 "Имя:          " + warrior.getBaseCharacteristic().getName() +
@@ -41,7 +46,9 @@ public class Main {
               "\nПол:          " + warrior.getBaseCharacteristic().getSex() +
             "\n\nЗдоровье:     " + warrior.getBaseCharacteristic().getHealth() +
               "\nВыносливость: " + warrior.getBaseCharacteristic().getStamina() +
-            "\n\n");
+            "\n\nУрон оружием: " + warrior.getBaseCharacteristic().getWeaponDamage() +
+              "\n" +
+              "\nШлем:         ");
         System.out.println();
     }
 }

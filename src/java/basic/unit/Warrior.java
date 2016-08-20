@@ -7,13 +7,12 @@ import basic.unit.skills.*;
 import basic.weapon.Weapon;
 import basic.weapon.WeaponType;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Warrior {
+    Map<ArmorType, Armor> armors = new HashMap<ArmorType, Armor>();
     Weapon weapon = new Weapon(WeaponType.NO_TYPE, 0, 0);
-    Armor shield = new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0);
-    Armor helm = new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0);
-    Armor body = new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0);
-    Armor gloves = new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0);
-    Armor boots = new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0);
 
     BaseCharacteristic baseCharacteristic;
     HandToHandFightSkill handToHandFightSkill;
@@ -29,6 +28,12 @@ public class Warrior {
         twoHandedWeaponSkill = new TwoHandedWeaponSkill();
         shieldBlockSkill = new ShieldBlockSkill();
         armorSkill = new ArmorSkill();
+
+        armors.put(ArmorType.SHIELD, new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0));
+        armors.put(ArmorType.HELM, new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0));
+        armors.put(ArmorType.BODY, new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0));
+        armors.put(ArmorType.GLOVES, new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0));
+        armors.put(ArmorType.BOOTS, new Armor(ArmorType.NO_TYPE, ArmorMaterial.NO_MATERIAL, 0, 0));
     }
 
     public Warrior(int strength, int agility, int concentration, boolean sex, String name) {
@@ -41,17 +46,23 @@ public class Warrior {
         setWeaponAndArmorToBaseCharacteristic();
     }
 
-    public void setArmor(Armor armor) {
+    public void setArmors(Armor armor) {
+//        for (ArmorType type : armors.keySet()) {
+//            if (armor.getArmorCharacter().getType().equals(type)) {
+//                armors.put(type, armor);
+//            }
+//        }
+
         if (armor.getArmorCharacter().getType().equals(ArmorType.SHIELD)) {
-            shield = armor;
+            armors.put(ArmorType.SHIELD, armor);
         } else if (armor.getArmorCharacter().getType().equals(ArmorType.HELM)) {
-            helm = armor;
+            armors.put(ArmorType.HELM, armor);
         } else if (armor.getArmorCharacter().getType().equals(ArmorType.BODY)) {
-            body = armor;
+            armors.put(ArmorType.BODY, armor);
         } else if (armor.getArmorCharacter().getType().equals(ArmorType.GLOVES)) {
-            gloves = armor;
+            armors.put(ArmorType.GLOVES, armor);
         } else if (armor.getArmorCharacter().getType().equals(ArmorType.BOOTS)) {
-            boots = armor;
+            armors.put(ArmorType.BOOTS, armor);
         } else {
             return;
         }
@@ -111,26 +122,6 @@ public class Warrior {
         return weapon;
     }
 
-    public Armor getShield() {
-        return shield;
-    }
-
-    public Armor getHelm() {
-        return helm;
-    }
-
-    public Armor getBody() {
-        return body;
-    }
-
-    public Armor getGloves() {
-        return gloves;
-    }
-
-    public Armor getBoots() {
-        return boots;
-    }
-
     private void setBaseCharacteristic() {
         int modTwo = 2;
         int modThree = 3;
@@ -162,15 +153,17 @@ public class Warrior {
 
     private void setWeaponAndArmorToBaseCharacteristic() {
         int modTwo = 2;
+        int modFife = 5;
 
         int strength = getBaseCharacteristic().getStrength();
         double weaponWeight = getWeapon().getWeight();
-        double shieldWeight = getShield().getArmorCharacter().getWeight();
-        double helmWeight = getHelm().getArmorCharacter().getWeight();
-        double bodyWeight = getBody().getArmorCharacter().getWeight();
-        double glovesWeight = getGloves().getArmorCharacter().getWeight();
-        double bootsWeight = getBoots().getArmorCharacter().getWeight();
-        double allArmorWeight = weaponWeight + shieldWeight + helmWeight + bodyWeight + glovesWeight + bootsWeight;
+        double allArmorWeight = 0;
+
+        for (Armor armor : armors.values()) {
+            weaponWeight = weaponWeight + armor.getArmorCharacter().getWeight();
+        }
+
+        double weaponDamage = (strength * modFife + weapon.
 
         setNeededStaminaToAttack(allArmorWeight, modTwo, strength);
 

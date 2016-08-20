@@ -1,5 +1,8 @@
 package basic.weapon;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Weapon {
     private int quality;
     private double price;
@@ -7,11 +10,15 @@ public class Weapon {
     private WeaponType type;
     private boolean isOneHanded;
 
-    private double bluntDamage;
-    private double cutDamage;
-    private double slashDamage;
-    private double piercingDamage;
-    private double crushDamage;
+    private Map<DamageType, Double> weaponDamage = new HashMap<DamageType, Double>();
+
+    {
+        weaponDamage.put(DamageType.BLUNT, 0.0);
+        weaponDamage.put(DamageType.CUT, 0.0);
+        weaponDamage.put(DamageType.SLASH, 0.0);
+        weaponDamage.put(DamageType.PIERCING, 0.0);
+        weaponDamage.put(DamageType.CRUSH, 0.0);
+    }
 
     public Weapon(WeaponType type, double weight, int quality) {
         this.type = type;
@@ -40,26 +47,6 @@ public class Weapon {
 
     public boolean isOneHanded() {
         return isOneHanded;
-    }
-
-    public double getBluntDamage() {
-        return bluntDamage;
-    }
-
-    public double getCutDamage() {
-        return cutDamage;
-    }
-
-    public double getSlashDamage() {
-        return slashDamage;
-    }
-
-    public double getPiercingDamage() {
-        return piercingDamage;
-    }
-
-    public double getCrushDamage() {
-        return crushDamage;
     }
 
     private void setWeapon() {

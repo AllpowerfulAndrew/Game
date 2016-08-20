@@ -1,5 +1,10 @@
 package basic.unit;
 
+import basic.weapon.DamageType;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class BaseCharacteristic {
     private int strength;
     private int agility;
@@ -7,11 +12,12 @@ public class BaseCharacteristic {
     private final String sex;
     private final String name;
 
+    private Map<DamageType, Double> weaponDamage = new HashMap<DamageType, Double>();
+
     private double health;
     private double stamina;
     private double handDamage;
     private double footDamage;
-    private double weaponDamage;
     private double criticalDamage;
     private double neededStaminaToAttack;
     private double attackSpeed;
@@ -20,6 +26,14 @@ public class BaseCharacteristic {
     private double dodgeFrequency;
 
     private int mainBattleExperience = 0;
+
+    {
+        weaponDamage.put(DamageType.BLUNT, 0.0);
+        weaponDamage.put(DamageType.CUT, 0.0);
+        weaponDamage.put(DamageType.SLASH, 0.0);
+        weaponDamage.put(DamageType.PIERCING, 0.0);
+        weaponDamage.put(DamageType.CRUSH, 0.0);
+    }
 
     public BaseCharacteristic(int strength, int agility, int concentration, boolean sex, String name) {
         this.strength = strength;
@@ -93,11 +107,11 @@ public class BaseCharacteristic {
         this.footDamage = footDamage;
     }
 
-    public double getWeaponDamage() {
+    public Map<DamageType, Double> getWeaponDamage() {
         return weaponDamage;
     }
 
-    public void setWeaponDamage(double weaponDamage) {
+    public void setWeaponDamage(Map<DamageType, Double> weaponDamage) {
         this.weaponDamage = weaponDamage;
     }
 
