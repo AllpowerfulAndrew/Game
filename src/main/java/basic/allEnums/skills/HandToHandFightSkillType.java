@@ -1,0 +1,6 @@
+package basic.allEnums.skills;
+
+public enum HandToHandFightSkillType {
+    HANDS_FIGHT_SKILL, FOOTS_FIGHT_SKILL, RIGHT_HAND_FIGHT_SKILL,
+    LEFT_HAND_FIGHT_SKILL, RIGHT_FOOT_FIGHT_SKILL, LEFT_FOOT_FIGHT_SKILL
+}
