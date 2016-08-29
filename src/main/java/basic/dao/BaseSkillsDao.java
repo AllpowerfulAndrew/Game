@@ -1,4 +1,4 @@
 package basic.dao;
 
-public interface BaseSkillsDao<Skills> extends BaseDao<Skills> {
+public interface BaseSkillsDao<BaseSkills> extends BaseDao<BaseSkills> {
 }

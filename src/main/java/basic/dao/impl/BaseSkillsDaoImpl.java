@@ -1,16 +1,16 @@
 package basic.dao.impl;
 
 import basic.dao.BaseSkillsDao;
-import basic.unit.Skills;
+import basic.model.entity.BaseSkills;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public class BaseSkillsDaoImpl extends BaseDaoImpl<Skills> implements BaseSkillsDao<Skills> {
+public class BaseSkillsDaoImpl extends BaseDaoImpl<BaseSkills> implements BaseSkillsDao<BaseSkills> {
 
     @Override
-    protected Class<Skills> getEntityName() {
-        return Skills.class;
+    protected Class<BaseSkills> getEntityName() {
+        return BaseSkills.class;
     }
 }

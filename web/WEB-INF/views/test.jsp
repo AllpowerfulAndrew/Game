@@ -4,12 +4,10 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Unit</title>
 </head>
 <body>
-${unitadd} <br/>
-${unitadd1}
-
-
+${unit}
 </body>
 </html>

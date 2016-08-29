@@ -1,12 +1,13 @@
 package basic.config;
 
 import basic.dao.BaseSkillsDao;
+import basic.dao.WarriorDao;
 import basic.dao.impl.BaseSkillsDaoImpl;
-import basic.unit.DamageType;
-import basic.unit.Skills;
-import basic.unit.Warrior;
+import basic.dao.impl.WarriorDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource(value = {"classpath:util.properties"})
@@ -21,30 +22,7 @@ public class AppContext {
     }
 
     @Bean
-    @Scope("prototype")
-    public Skills skills() {
-        Skills skills = new Skills();
-        return skills;
+    public WarriorDao warriorDao() {
+        return new WarriorDaoImpl();
     }
-
-    @Bean
-    @Scope("prototype")
-    public DamageType type() {
-        DamageType type = new DamageType();
-        return type;
-    }
-
-    @Bean
-    @Scope("prototype")
-    public Warrior warrior() {
-        Warrior warrior = new Warrior();
-        return warrior;
-    }
-//
-//    @Bean
-//    @Scope("prototype")
-//    public Warrior warrior(int strength, int agility, int concentration, boolean sex, String name) {
-//        Warrior warrior = new Warrior();
-//        return warrior;
-//    }
 }

@@ -31,9 +31,9 @@ public class Skills {
         twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.TWO_HANDED_AXE_FIGHT_SKILL, 0.0);
         twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.TWO_HANDED_MACE_FIGHT_SKILL, 0.0);
         twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.TWO_HANDED_HAMMER_FIGHT_SKILL, 0.0);
-        twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.HALBERD_FIGHT_SKILL, 0.0);
-        twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.SPEAR_FIGHT_SKILL, 0.0);
         twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.STAFF_FIGHT_SKILL, 0.0);
+        twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.SPEAR_FIGHT_SKILL, 0.0);
+        twoHandedWeaponSkills.put(TwoHandedWeaponSkillType.HALBERD_FIGHT_SKILL, 0.0);
 
         shieldBlockSkills.put(ShieldBlockSkillType.LIGHT_SHIELD_BLOCK_SKILL, 0.0);
         shieldBlockSkills.put(ShieldBlockSkillType.MIDDLE_SHIELD_BLOCK_SKILL, 0.0);

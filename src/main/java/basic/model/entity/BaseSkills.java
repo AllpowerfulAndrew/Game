@@ -1,21 +1,36 @@
 package basic.model.entity;
 
-import org.springframework.stereotype.Repository;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "main_skills")
+@Table(name = "base_skills")
 public class BaseSkills {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "id")
+    private int id = 1;
 
-    @Column(name = "skill_name", unique = true)
-    private String skillName;
+    @Column(name = "main_battle_experience")
+    private double mainBattleExperience = 0;
 
-    @Column(name = "skill_value")
-    private double skillValue;
+    @Column(name = "one_handed_weapon_skills")
+    private double oneHandedWeaponSkills = 0;
+
+    @Column(name = "two_handed_weapon_skills")
+    private double twoHandedWeaponSkills = 0;
+
+    @Column(name = "shield_block_skills")
+    private double shieldBlockSkills = 0;
+
+    @Column(name = "armor_skills")
+    private double armorSkills = 0;
+
+    @Column(name = "hand_to_hand_fight_skills")
+    private double handToHandFightSkills = 0;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "baseSkills")
+    private Warrior warrior;
 
     public BaseSkills() {
     }
@@ -28,19 +43,59 @@ public class BaseSkills {
         this.id = id;
     }
 
-    public String getSkillName() {
-        return skillName;
+    public double getMainBattleExperience() {
+        return mainBattleExperience;
     }
 
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
+    public void setMainBattleExperience(double mainBattleExperience) {
+        this.mainBattleExperience = mainBattleExperience;
     }
 
-    public double getSkillValue() {
-        return skillValue;
+    public double getOneHandedWeaponSkills() {
+        return oneHandedWeaponSkills;
     }
 
-    public void setSkillValue(double skillValue) {
-        this.skillValue = skillValue;
+    public void setOneHandedWeaponSkills(double oneHandedWeaponSkills) {
+        this.oneHandedWeaponSkills = oneHandedWeaponSkills;
+    }
+
+    public double getTwoHandedWeaponSkills() {
+        return twoHandedWeaponSkills;
+    }
+
+    public void setTwoHandedWeaponSkills(double twoHandedWeaponSkills) {
+        this.twoHandedWeaponSkills = twoHandedWeaponSkills;
+    }
+
+    public double getShieldBlockSkills() {
+        return shieldBlockSkills;
+    }
+
+    public void setShieldBlockSkills(double shieldBlockSkills) {
+        this.shieldBlockSkills = shieldBlockSkills;
+    }
+
+    public double getArmorSkills() {
+        return armorSkills;
+    }
+
+    public void setArmorSkills(double armorSkills) {
+        this.armorSkills = armorSkills;
+    }
+
+    public double getHandToHandFightSkills() {
+        return handToHandFightSkills;
+    }
+
+    public void setHandToHandFightSkills(double handToHandFightSkills) {
+        this.handToHandFightSkills = handToHandFightSkills;
+    }
+
+    public Warrior getWarrior() {
+        return warrior;
+    }
+
+    public void setWarrior(Warrior warrior) {
+        this.warrior = warrior;
     }
 }
